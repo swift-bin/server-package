@@ -8,16 +8,16 @@ let package = Package(
     platforms: [.macOS(.v13)],
     dependencies: [
         .package(url: "https://github.com/leviouwendijk/plate.git", branch: "master"),
-        .package(url: "https://github.com/leviouwendijk/Interfaces.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Interfaces.git", branch: "master"),
 
-        .package(url: "https://github.com/leviouwendijk/Path.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Path.git", branch: "master"),
         
-        .package(url: "https://github.com/leviouwendijk/Difference.git", branch: "master"),
-        .package(url: "https://github.com/leviouwendijk/Writers.git", branch: "master"),
-        .package(url: "https://github.com/leviouwendijk/Arguments.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Difference.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Writers.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Arguments.git", branch: "master"),
 
-        .package(url: "https://github.com/leviouwendijk/Variables.git", branch: "master"),
-        .package(url: "https://github.com/leviouwendijk/Terminal.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Variables.git", branch: "master"),
+        .package(url: "https://github.com/swift-lco/Terminal.git", branch: "master"),
 
     ],
     targets: [
