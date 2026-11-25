@@ -178,9 +178,8 @@ extension PackageGenerator {
                 indentation: 16
             )
 
-            let catalog = ServerPackageDependencyRenderer.dynamicCatalog(
-                ServerPackageDependencyCatalog.minimal,
-                indentation: 4
+            let organizations = ServerPackageDependencyRenderer.dynamicOrganizations(
+                ServerPackageDependencyCatalog.minimal
             )
 
             return """
@@ -209,29 +208,17 @@ extension PackageGenerator {
             \(deps_block)
 
             enum Libs {
-                static let leviouwendijk = LeviOuwendijk()
+            \(organizations.libs)
             }
 
-            struct LeviOuwendijk {
-            \(catalog)
-            }
+            \(organizations.catalogs)
 
             extension Package.Dependency {
-                static var leviouwendijk: Deps.Packages<LeviOuwendijk> {
-                    .init(
-                        github: .init(owner: "leviouwendijk"),
-                        catalog: Libs.leviouwendijk
-                    )
-                }
+            \(organizations.packages)
             }
 
             extension Target.Dependency {
-                static var leviouwendijk: Deps.Products<LeviOuwendijk> {
-                    .init(
-                        github: .init(owner: "leviouwendijk"),
-                        catalog: Libs.leviouwendijk
-                    )
-                }
+            \(organizations.products)
             }
             """
         }
@@ -249,9 +236,8 @@ extension PackageGenerator {
                 indentation: 16
             )
 
-            let catalog = ServerPackageDependencyRenderer.dynamicCatalog(
-                ServerPackageDependencyCatalog.full,
-                indentation: 4
+            let organizations = ServerPackageDependencyRenderer.dynamicOrganizations(
+                ServerPackageDependencyCatalog.full
             )
 
             return """
@@ -317,15 +303,13 @@ extension PackageGenerator {
             \(deps_block)
 
             enum Libs {
-                static let leviouwendijk = LeviOuwendijk()
+            \(organizations.libs)
                 static let apple = Apple()
                 static let awslabs = AWSLabs()
                 static let smithyLang = SmithyLang()
             }
 
-            struct LeviOuwendijk {
-            \(catalog)
-            }
+            \(organizations.catalogs)
 
             struct Apple {
                 let PklSwift = Deps.Ref(
@@ -416,12 +400,7 @@ extension PackageGenerator {
             }
 
             extension Package.Dependency {
-                static var leviouwendijk: Deps.Packages<LeviOuwendijk> {
-                    .init(
-                        github: .init(owner: "leviouwendijk"),
-                        catalog: Libs.leviouwendijk
-                    )
-                }
+            \(organizations.packages)
 
                 static var apple: Deps.Packages<Apple> {
                     .init(
@@ -446,12 +425,7 @@ extension PackageGenerator {
             }
 
             extension Target.Dependency {
-                static var leviouwendijk: Deps.Products<LeviOuwendijk> {
-                    .init(
-                        github: .init(owner: "leviouwendijk"),
-                        catalog: Libs.leviouwendijk
-                    )
-                }
+            \(organizations.products)
 
                 static var apple: Deps.Products<Apple> {
                     .init(
